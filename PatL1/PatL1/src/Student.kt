@@ -18,7 +18,16 @@ class Student(
                 "Гит: ${git?: "отсутствует"}\n"
     }
 
+    constructor(id: Int, lastName: String, firstName: String, middleName: String, phone: String?, telegram: String?) : this(id, lastName, firstName, middleName)
+    {
+        this.telegram = telegram
+        this.phone = phone
+    }
 
+    constructor(id: Int, lastName: String, firstName: String, middleName: String, phone: String?) : this(id, lastName, firstName, middleName)
+    {
+        this.phone = phone
+    }
 
 
     // Геттеры
