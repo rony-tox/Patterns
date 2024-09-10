@@ -10,69 +10,82 @@ class Student(
     var git: String? = null
 ) {
 
+    override fun toString(): String {
+        return "ФИО: ${lastName} $firstName $middleName\n" +
+                "Телефон: ${phone?: "отсутствует"}\n" +
+                "Телеграм: ${telegram?: "отсутствует"}\n" +
+                "Почта: ${email?: "отсутствует"}\n" +
+                "Гит: ${git?: "отсутствует"}\n"
+    }
+
+
+
+
     // Геттеры
-    fun getIdV(): Int {
+    fun getIdV(): Int
+    {
         return id
     }
-
-    fun getLastNameV(): String {
+    fun getLastNameV(): String
+    {
         return lastName
     }
-
-    fun getFirstNameV(): String {
+    fun getFirstNameV(): String
+    {
         return firstName
     }
-
-    fun getMiddleNameV(): String {
+    fun getMiddleNameV(): String
+    {
         return middleName
     }
-
-    fun getPhoneV(): String? {
+    fun getPhoneV(): String?
+    {
         return phone
     }
-
-    fun getTelegramV(): String? {
+    fun getTelegramV(): String?
+    {
         return telegram
     }
-
-    fun getEmailV(): String? {
+    fun getEmailV(): String?
+    {
         return email
     }
-
-    fun getGitV(): String? {
+    fun getGitV(): String?
+    {
         return git
     }
 
     // Сеттеры
-    fun setIdV(id: Int) {
+    fun setIdV(id: Int)
+    {
         this.id = id
     }
-
-    fun setLastNameV(lastName: String) {
+    fun setLastNameV(lastName: String)
+    {
         this.lastName = lastName
     }
-
-    fun setFirstNameV(firstName: String) {
+    fun setFirstNameV(firstName: String)
+    {
         this.firstName = firstName
     }
-
-    fun setMiddleNameV(middleName: String) {
+    fun setMiddleNameV(middleName: String)
+    {
         this.middleName = middleName
     }
-
-    fun setPhoneV(phone: String) {
+    fun setPhoneV(phone: String)
+    {
         this.phone = phone
     }
-
-    fun setTelegramV(telegram: String) {
+    fun setTelegramV(telegram: String)
+    {
         this.telegram = telegram
     }
-
-    fun setEmailV(email: String) {
+    fun setEmailV(email: String)
+    {
         this.email = email
     }
-
-    fun setGitV(git: String) {
+    fun setGitV(git: String)
+    {
         this.git = git
     }
 }
