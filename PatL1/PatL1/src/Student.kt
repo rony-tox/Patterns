@@ -1,14 +1,97 @@
-// Student.kt
-class Student(
-    var id: Int,
-    var lastName: String,
-    var firstName: String,
-    var middleName: String,
-    var phone: String? = null,
-    var telegram: String? = null,
-    var email: String? = null,
+class Student
+{
+    //private var _id : Int = 0
+
+    var id: Int = 0
+        get() = field
+        set(value)
+        {
+            if(value==null)
+                print ("Некорректный ввод.")
+            else
+                field = value
+        }
+    var lastName: String = ""
+        get() = field
+        set(value)
+        {
+            if(value==null)
+                print ("Некорректный ввод.")
+            else
+                field = value
+        }
+    var firstName: String = ""
+        get() = field
+        set(value)
+        {
+            if(value==null)
+                print ("Некорректный ввод.")
+            else
+                field = value
+        }
+    var middleName: String = ""
+        get() = field
+        set(value)
+        {
+            if(value==null)
+                print ("Некорректный ввод.")
+            else
+                field = value
+        }
+    var phone: String? = null
+        get() = field
+        set(value)
+        {
+            if(value!=null)
+                field = value
+        }
+    var telegram: String? = null
+        get() = field
+        set(value)
+        {
+            if(value!=null)
+                field = value
+        }
+    var email: String? = null
+        get() = field
+        set(value)
+        {
+            if(value!=null)
+                field = value
+        }
     var git: String? = null
-) {
+        get() = field
+        set(value)
+        {
+            if(value!=null)
+                field = value
+        }
+
+    constructor(id: Int, lastName: String, firstName: String, middleName: String)
+    {
+        this.id = id
+        this.lastName = lastName
+        this.firstName = firstName
+        this.middleName = middleName
+    }
+
+    constructor(id: Int, lastName: String, firstName: String, middleName: String, phone: String?): this(id, lastName, firstName, middleName)
+    {
+        this.phone = phone
+    }
+
+    constructor(id: Int, lastName: String, firstName: String, middleName: String, phone: String?, telegram: String?, email: String?, git: String?): this(id, lastName, firstName, middleName)
+    {
+        this.phone = phone
+        this.telegram = telegram
+        this.email = email
+        this.git = git
+    }
+
+
+
+
+
 
     override fun toString(): String {
         return "ФИО: ${lastName} $firstName $middleName\n" +
@@ -18,83 +101,12 @@ class Student(
                 "Гит: ${git?: "отсутствует"}\n"
     }
 
-    constructor(id: Int, lastName: String, firstName: String, middleName: String, phone: String?, telegram: String?) : this(id, lastName, firstName, middleName)
+    companion object
     {
-        this.telegram = telegram
-        this.phone = phone
+        fun isValidPhone(phone: String?): Boolean
+        {
+            return phone != null && phone.matches(Regex("^\\+7\\d{10}$"))
+        }
     }
 
-    constructor(id: Int, lastName: String, firstName: String, middleName: String, phone: String?) : this(id, lastName, firstName, middleName)
-    {
-        this.phone = phone
-    }
-
-
-    // Геттеры
-    fun getIdV(): Int
-    {
-        return id
-    }
-    fun getLastNameV(): String
-    {
-        return lastName
-    }
-    fun getFirstNameV(): String
-    {
-        return firstName
-    }
-    fun getMiddleNameV(): String
-    {
-        return middleName
-    }
-    fun getPhoneV(): String?
-    {
-        return phone
-    }
-    fun getTelegramV(): String?
-    {
-        return telegram
-    }
-    fun getEmailV(): String?
-    {
-        return email
-    }
-    fun getGitV(): String?
-    {
-        return git
-    }
-
-    // Сеттеры
-    fun setIdV(id: Int)
-    {
-        this.id = id
-    }
-    fun setLastNameV(lastName: String)
-    {
-        this.lastName = lastName
-    }
-    fun setFirstNameV(firstName: String)
-    {
-        this.firstName = firstName
-    }
-    fun setMiddleNameV(middleName: String)
-    {
-        this.middleName = middleName
-    }
-    fun setPhoneV(phone: String)
-    {
-        this.phone = phone
-    }
-    fun setTelegramV(telegram: String)
-    {
-        this.telegram = telegram
-    }
-    fun setEmailV(email: String)
-    {
-        this.email = email
-    }
-    fun setGitV(git: String)
-    {
-        this.git = git
-    }
 }
