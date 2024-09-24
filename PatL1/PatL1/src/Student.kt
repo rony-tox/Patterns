@@ -37,7 +37,7 @@ class Student
             else
                 field = value
         }
-    var contacts: HashMap <String, String> = hashMapOf(
+    var contacts: HashMap <String, String?> = hashMapOf(
         "phone" to "отсутствует",
         "telegram" to "отсутствует",
         "email" to "отсутствует",
@@ -89,7 +89,7 @@ class Student
     {
         fun isValidPhone(phone: String?): Boolean
         {
-            return ( phone!=null && phone.matches(Regex("^\\+7\\d{10}$")) )
+            return ( phone!=null && phone.matches(Regex("""^8\d{10}|\+7\d{10}$""")) )
         }
     }
 
