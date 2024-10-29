@@ -98,62 +98,70 @@ class Student
 
     }
 
-//    constructor(contacts: String)
-//    {
-//        val c = contacts.split(",", limit = 8)
-//        for (i in c)
-//        {
-//            val j = i.split("=")
-//            if (j[0]=="phone")
-//            {
-//                val phone = j[1]
-//                if (phone != null && isValidPhone(phone))
-//                    this.phone = phone
-//                else
-//                    this.phone = "отсутствует"
-//            }
-//            else if (j[0]=="telegram")
-//            {
-//                val telegram = j[1]
-//                if (telegram!=null && isValidTelegram(telegram))
-//                    this.telegram=telegram
-//                else
-//                    this.telegram = "отсутствует"
-//            }
-//            else if (j[0]=="email")
-//            {
-//                val email = j[1]
-//                if (email!=null && isValidEmail(email))
-//                    this.email=email
-//                else
-//                    this.email = "отсутствует"
-//            }
-//            else if (j[0]=="git")
-//            {
-//                val git = j[1]
-//                if (git!=null && isValidGit(git))
-//                    this.git=git
-//                else
-//                    this.git = "отсутствует"
-//            }
-//            else if (j[0]=="id")
-//            {
-//                this.id = j[1].toInt()
-//            }
-//            else if (j[0]=="Name")
-//            {
-//                this.lastName = j[1]
-//            }
-//            else if (j[0]=="Name")
-//            {
-//                this.firstName = j[1]
-//            }
-//            else if (j[0]=="Name")
-//            {
-//                this.middleName = j[1]
-//            }
-//        }
-//    }
+    constructor(contacts: String)
+    {
+        val c = contacts.split(",", limit = 8)
+        for (i in c)
+        {
+            val j = i.split("=")
+            if (j[0]=="phone")
+            {
+                val phone = j[1]
+                if (phone != null && isValidPhone(phone))
+                    this.phone = phone
+                else
+                    this.phone = "отсутствует"
+            }
+            else if (j[0]=="telegram")
+            {
+                val telegram = j[1]
+                if (telegram!=null && isValidTelegram(telegram))
+                    this.telegram=telegram
+                else
+                    this.telegram = "отсутствует"
+            }
+            else if (j[0]=="email")
+            {
+                val email = j[1]
+                if (email!=null && isValidEmail(email))
+                    this.email=email
+                else
+                    this.email = "отсутствует"
+            }
+            else if (j[0]=="git")
+            {
+                val git = j[1]
+                if (git!=null && isValidGit(git))
+                    this.git=git
+                else
+                    this.git = "отсутствует"
+            }
+            else if (j[0]=="id")
+            {
+                this.id = j[1].toInt()
+            }
+            else if (j[0]=="lastName")
+            {
+                this.lastName = j[1]
+            }
+            else if (j[0]=="firstName")
+            {
+                this.firstName = j[1]
+            }
+            else if (j[0]=="middleName")
+            {
+                this.middleName = j[1]
+            }
+        }
+        if (this.firstName=="" || this.firstName=="" || this.firstName=="" || this.id <=0)
+        {
+            println("Произошла потеря ключевых данных. Проверьте введённые данные.")
+            this.firstName == "______"
+            this.middleName == "______"
+            this.lastName == "______"
+            this.id == -1
+        }
+    }
 
     fun setContacts(contacts: HashMap<String, String>): Void?
     {
