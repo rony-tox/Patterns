@@ -100,7 +100,7 @@ class Student
 
     constructor(contacts: String)
     {
-        val c = contacts.split(",", limit = 8)
+        val c = contacts.split(",", limit = 9)
         for (i in c)
         {
             val j = i.split("=")
@@ -219,23 +219,23 @@ class Student
         return true
     }
 
-    fun getInfo(): Void?
+    fun getInfo(): String
     {
         var FIO = this.middleName + " " + this.firstName[0] + "." + this.lastName[0] + "."
         var ss = "";
-        if (this.telegram!="")
-            ss = "[телеграм, " + this.telegram + "]"
+        if (this.telegram!="отсутствует")
+            ss = "|телеграм:" + this.telegram + "|"
         else
-            if (this.phone!="")
-                ss = "[телефон, " + this.phone + "]"
+            if (this.phone!="отсутствует")
+                ss = "|телефон:" + this.phone + "|"
             else
-                if (this.email!="")
-                    ss = "[почта, " + this.email + "]"
+                if (this.email!="отсутствует")
+                    ss = "|почта:" + this.email + "|"
                 else
-                    if (this.git!="")
-                        ss = "[гит, " + this.git + "]"
-        println("ФИО: " + FIO + ", " + ss)
-        return null
+                    ss = "|способ связи:отсутствует|"
+        val fin = "ФИО: |" + FIO + "|, " + ss + ", гит: |" + this.git +"|"
+        //println(fin)
+        return fin
     }
 
     override fun toString(): String {

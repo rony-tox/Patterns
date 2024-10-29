@@ -15,6 +15,15 @@ fun main() {
     println(student3)
     println()
     println(student4)
-    student3.getInfo()
+    println()
+    println(student1.getInfo())
+
+    val shst1 = Student_short(1, student2.getInfo())
+    println()
+    println(shst1)
+    val shst2 = Student_short(student3)
+    println()
+    println(shst2)
+
 }
 
