@@ -187,7 +187,6 @@ class Student
         return null;
     }
 
-
     fun validate(): Void?
     {
         if (this.telegram == "отсутствует")
@@ -218,6 +217,25 @@ class Student
         if (this.telegram == "отсутствует")
             return false
         return true
+    }
+
+    fun getInfo(): Void?
+    {
+        var FIO = this.middleName + " " + this.firstName[0] + "." + this.lastName[0] + "."
+        var ss = "";
+        if (this.telegram!="")
+            ss = "[телеграм, " + this.telegram + "]"
+        else
+            if (this.phone!="")
+                ss = "[телефон, " + this.phone + "]"
+            else
+                if (this.email!="")
+                    ss = "[почта, " + this.email + "]"
+                else
+                    if (this.git!="")
+                        ss = "[гит, " + this.git + "]"
+        println("ФИО: " + FIO + ", " + ss)
+        return null
     }
 
     override fun toString(): String {
