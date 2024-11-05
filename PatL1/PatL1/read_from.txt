@@ -1,0 +1,3 @@
+id=11,firstName=Ana,middleName=Annotich,lastName=Annichna,phone=123,git=anagit,email=anamail@mail.ru
+id=12,firstName=Beha,middleName=Bech,lastName=Bechich,phone=89056667841,git=,email=@mail.ru
+id=13,firstName=Voha,middleName=Venn,lastName=Vonnevich,phone=,git=,email=

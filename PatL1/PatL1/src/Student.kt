@@ -1,4 +1,5 @@
-class Student
+
+open class Student
 {
     private var id: Int = 0
         get() = field
@@ -54,7 +55,7 @@ class Student
         {
             field = value
         }
-    private var git: String = "отсутствует"
+    protected var git: String = "отсутствует"
         get() = field
         set(value)
         {
@@ -64,6 +65,10 @@ class Student
 
     constructor(id: Int, lastName: String, firstName: String, middleName: String)
     {
+        if (firstName=="" || firstName=="" || firstName=="" || id <=0)
+        {
+            throw IllegalArgumentException("Некорректные ключевые данные были использованы при создании [1] объекта.")
+        }
         this.id = id
         this.lastName = lastName
         this.firstName = firstName
@@ -72,6 +77,10 @@ class Student
 
     constructor(id: Int, lastName: String, firstName: String, middleName: String, contacts: HashMap<String, String>): this(id, lastName, firstName, middleName)
     {
+        if (firstName=="" || firstName=="" || firstName=="" || id <=0)
+        {
+            throw IllegalArgumentException("Некорректные ключевые данные были использованы при создании [2] объекта.")
+        }
         val phone = contacts["phone"]
         if (phone!=null && isValidPhone(phone))
             this.phone=phone
@@ -155,11 +164,7 @@ class Student
         }
         if (this.firstName=="" || this.firstName=="" || this.firstName=="" || this.id <=0)
         {
-            println("Произошла потеря ключевых данных. Проверьте введённые данные.")
-            this.firstName == "______"
-            this.middleName == "______"
-            this.lastName == "______"
-            this.id == -1
+            throw IllegalArgumentException("Некорректные ключевые данные были использованы при создании [3] объекта.")
         }
     }
 
@@ -219,7 +224,7 @@ class Student
         return true
     }
 
-    fun getInfo(): String
+    public fun getInfo(): String
     {
         var FIO = this.middleName + " " + this.firstName[0] + "." + this.lastName[0] + "."
         var ss = "";
@@ -238,6 +243,12 @@ class Student
         return fin
     }
 
+    fun convert_for_txt(): String
+    {
+        //id=11,firstName=Ana,middleName=Annotich,lastName=Annichna,phone=123,git=anagit,email=anamail@mail.ru
+        var s = "id="+this.id+",firstName="+this.firstName+",middleName="+this.middleName+",lastName="+this.lastName+",phone="+this.phone+",git="+this.git+",email="+this.email+"\n"
+        return s
+    }
     override fun toString(): String {
         return "ФИО: ${lastName} $firstName $middleName\n" +
                 "Телефон: ${phone}\n" +

@@ -1,4 +1,4 @@
-class Student_short
+class Student_short//: Student
 {
     private var sid: Int = 0
         get() = field
@@ -31,7 +31,7 @@ class Student_short
             field = value
         }
 
-    constructor(s: Student)
+    constructor(s: Student)//: super()
     {
         val infa = s.getInfo()
         val c = infa.split("|")
@@ -41,7 +41,7 @@ class Student_short
         this.sid = 0
     }
 
-    constructor(id: Int, infa: String)
+    constructor(id: Int, infa: String)// : this(id, infa)//: super()
     {
         this.sid = id
         val c = infa.split("|")
@@ -49,7 +49,6 @@ class Student_short
         this.sConnect = c[3]
         this.sGit = c[5]
     }
-
 
     override fun toString(): String {
         return "ФИО: ${sFIO}\n" +
