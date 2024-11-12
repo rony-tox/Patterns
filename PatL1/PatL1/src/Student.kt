@@ -1,21 +1,11 @@
-
 open class Student: The_Student
 {
-    private var id: Int = 0
-        get() = field
-        set(value)
-        {
-            if(value==null)
-                print ("Некорректный ввод.")
-            else
-                field = value
-        }
     private var lastName: String = ""
         get() = field
         set(value)
         {
             if(value==null)
-                print ("Некорректный ввод.")
+                throw IllegalArgumentException("Некорректные ключевые данные объекта.")
             else
                 field = value
         }
@@ -24,7 +14,7 @@ open class Student: The_Student
         set(value)
         {
             if(value==null)
-                print ("Некорректный ввод.")
+                throw IllegalArgumentException("Некорректные ключевые данные объекта.")
             else
                 field = value
         }
@@ -33,42 +23,35 @@ open class Student: The_Student
         set(value)
         {
             if(value==null)
-                print ("Некорректный ввод.")
+                throw IllegalArgumentException("Некорректные ключевые данные объекта.")
             else
                 field = value
         }
-    private var phone: String = "отсутствует"
+    private var phone: String? = "отсутствует"
         get() = field
         set(value)
         {
-            field = value
+            if (phone!=null && isValidPhone(phone))
+                field = value
         }
-    private var telegram: String = "отсутствует"
+    private var telegram: String? = "отсутствует"
         get() = field
         set(value)
         {
-            field = value
+            if (telegram!=null && isValidTelegram(telegram))
+                field = value
         }
-    private var email: String = "отсутствует"
+    private var email: String? = "отсутствует"
         get() = field
         set(value)
         {
-            field = value
-        }
-    protected override var git: String = "отсутствует"
-        get() = field
-        set(value)
-        {
-            field = value
+            if (email!=null && isValidEmail(email))
+                field = value
         }
 
 
-    constructor(id: Int, lastName: String, firstName: String, middleName: String): super(id, lastName, firstName, middleName)
+    constructor(id: Int, lastName: String, firstName: String, middleName: String)
     {
-        if (firstName=="" || firstName=="" || firstName=="" || id <=0)
-        {
-            throw IllegalArgumentException("Некорректные ключевые данные были использованы при создании [1] объекта.")
-        }
         this.id = id
         this.lastName = lastName
         this.firstName = firstName
@@ -77,37 +60,17 @@ open class Student: The_Student
 
     constructor(id: Int, lastName: String, firstName: String, middleName: String, contacts: HashMap<String, String>): this(id, lastName, firstName, middleName)
     {
-        if (firstName=="" || firstName=="" || firstName=="" || id <=0)
-        {
-            throw IllegalArgumentException("Некорректные ключевые данные были использованы при создании [2] объекта.")
-        }
         val phone = contacts["phone"]
-        if (phone!=null && isValidPhone(phone))
-            this.phone=phone
-        else
-            this.phone = "отсутствует"
-
+        this.phone=phone
         val telegram = contacts["telegram"]
-        if (telegram!=null && isValidTelegram(telegram))
-            this.telegram=telegram
-        else
-            this.telegram = "отсутствует"
-
+        this.telegram=telegram
         val email = contacts["email"]
-        if (email!=null && isValidEmail(email))
-            this.email=email
-        else
-            this.email = "отсутствует"
-
+        this.email=email
         val git = contacts["git"]
-        if (git!=null && isValidGit(git))
-            this.git=git
-        else
-            this.git = "отсутствует"
-
+        this.git=git
     }
 
-    constructor(contacts: String): super(contacts)
+    constructor(contacts: String)
     {
         val c = contacts.split(",", limit = 9)
         for (i in c)
@@ -116,34 +79,22 @@ open class Student: The_Student
             if (j[0]=="phone")
             {
                 val phone = j[1]
-                if (phone != null && isValidPhone(phone))
-                    this.phone = phone
-                else
-                    this.phone = "отсутствует"
+                this.phone = phone
             }
             else if (j[0]=="telegram")
             {
                 val telegram = j[1]
-                if (telegram!=null && isValidTelegram(telegram))
-                    this.telegram=telegram
-                else
-                    this.telegram = "отсутствует"
+                this.telegram=telegram
             }
             else if (j[0]=="email")
             {
                 val email = j[1]
-                if (email!=null && isValidEmail(email))
-                    this.email=email
-                else
-                    this.email = "отсутствует"
+                this.email=email
             }
             else if (j[0]=="git")
             {
                 val git = j[1]
-                if (git!=null && isValidGit(git))
-                    this.git=git
-                else
-                    this.git = "отсутствует"
+                this.git=git
             }
             else if (j[0]=="id")
             {
@@ -161,10 +112,6 @@ open class Student: The_Student
             {
                 this.middleName = j[1]
             }
-        }
-        if (this.firstName=="" || this.firstName=="" || this.firstName=="" || this.id <=0)
-        {
-            throw IllegalArgumentException("Некорректные ключевые данные были использованы при создании [3] объекта.")
         }
     }
 
@@ -255,27 +202,6 @@ open class Student: The_Student
                 "Телеграм: ${telegram}\n" +
                 "Почта: ${email}\n" +
                 "Гит: ${git}\n"
-    }
-
-    companion object
-    {
-        fun isValidPhone(phone: String?): Boolean
-        {
-            return ( phone!!.matches(Regex("""^8\d{10}|\+7\d{10}$""")) )
-        }
-        fun isValidTelegram(telegram: String?): Boolean
-        {
-            return ( telegram!!.matches(Regex("""^[@]\w+$""")) )
-        }
-        fun isValidEmail(email: String?): Boolean
-        {
-            return ( email!!.matches(Regex("""^\w+[@]\w+\.\w+$""")) )
-        }
-        fun isValidGit(git: String?): Boolean
-        {
-            return ( git!!.matches(Regex("""^\w+$""")) )
-        }
-
     }
 
 }

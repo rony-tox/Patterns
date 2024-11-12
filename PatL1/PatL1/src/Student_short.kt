@@ -1,59 +1,38 @@
 class Student_short: The_Student
 {
-    private var sid: Int = 0
+    private var FIO: String = ""
         get() = field
         set(value)
         {
             if(value==null)
-                print ("Некорректный ввод.")
+                throw IllegalArgumentException("Некорректные ключевые данные объекта.")
             else
                 field = value
         }
-    private var sFIO: String = ""
-        get() = field
-        set(value)
-        {
-            if(value==null)
-                print ("Некорректный ввод.")
-            else
-                field = value
-        }
-    private var sConnect: String = "отсутствует"
-        get() = field
-        set(value)
-        {
-            field = value
-        }
-    private var sGit: String = "отсутствует"
+    private var Connect: String = "отсутствует"
         get() = field
         set(value)
         {
             field = value
         }
 
-    constructor(s: Student) : super(s)
-    {
-        val infa = s.getInfo()
-        val c = infa.split("|")
-        this.sFIO = c[1]
-        this.sConnect = c[3]
-        this.sGit = c[5]
-        this.sid = 0
-    }
 
-    constructor(id: Int, infa: String) : super(id, infa)
+    constructor(s: Student): this(s.id, s.getInfo())
+    { }
+
+    constructor(id: Int, infa: String)
     {
-        this.sid = id
+        this.id = id
         val c = infa.split("|")
-        this.sFIO = c[1]
-        this.sConnect = c[3]
-        this.sGit = c[5]
+        this.FIO = c[1]
+        this.Connect = c[3]
+        this.git = c[5]
     }
 
     override fun toString(): String {
-        return "ФИО: ${sFIO}\n" +
-                "Связь: ${sConnect.split(":")[1]}\n" +
-                "Гит: ${sGit}\n"
+        return "ФИО: ${FIO}\n" +
+                "Связь: ${Connect.split(":")[1]}\n" +
+                "Гит: ${git}\n"
     }
 
 }
