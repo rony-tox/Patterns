@@ -1,5 +1,5 @@
 
-open class Student
+open class Student: The_Student
 {
     private var id: Int = 0
         get() = field
@@ -55,7 +55,7 @@ open class Student
         {
             field = value
         }
-    protected var git: String = "отсутствует"
+    protected override var git: String = "отсутствует"
         get() = field
         set(value)
         {
@@ -63,7 +63,7 @@ open class Student
         }
 
 
-    constructor(id: Int, lastName: String, firstName: String, middleName: String)
+    constructor(id: Int, lastName: String, firstName: String, middleName: String): super(id, lastName, firstName, middleName)
     {
         if (firstName=="" || firstName=="" || firstName=="" || id <=0)
         {
@@ -107,7 +107,7 @@ open class Student
 
     }
 
-    constructor(contacts: String)
+    constructor(contacts: String): super(contacts)
     {
         val c = contacts.split(",", limit = 9)
         for (i in c)

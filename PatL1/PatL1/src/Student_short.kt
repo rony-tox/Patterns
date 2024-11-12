@@ -1,4 +1,4 @@
-class Student_short//: Student
+class Student_short: The_Student
 {
     private var sid: Int = 0
         get() = field
@@ -31,7 +31,7 @@ class Student_short//: Student
             field = value
         }
 
-    constructor(s: Student)//: super()
+    constructor(s: Student) : super(s)
     {
         val infa = s.getInfo()
         val c = infa.split("|")
@@ -41,7 +41,7 @@ class Student_short//: Student
         this.sid = 0
     }
 
-    constructor(id: Int, infa: String)// : this(id, infa)//: super()
+    constructor(id: Int, infa: String) : super(id, infa)
     {
         this.sid = id
         val c = infa.split("|")
