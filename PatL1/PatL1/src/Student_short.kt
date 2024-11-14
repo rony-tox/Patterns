@@ -16,7 +16,6 @@ class Student_short: The_Student
             field = value
         }
 
-
     constructor(s: Student): this(s.id, s.getInfo())
     { }
 

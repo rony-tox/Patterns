@@ -31,21 +31,21 @@ open class Student: The_Student
         get() = field
         set(value)
         {
-            if (phone!=null && isValidPhone(phone))
+            if (value!=null && isValidPhone(value))
                 field = value
         }
     private var telegram: String? = "отсутствует"
         get() = field
         set(value)
         {
-            if (telegram!=null && isValidTelegram(telegram))
+            if (value!=null && isValidTelegram(value))
                 field = value
         }
     private var email: String? = "отсутствует"
         get() = field
         set(value)
         {
-            if (email!=null && isValidEmail(email))
+            if (value!=null && isValidEmail(value))
                 field = value
         }
 
@@ -203,5 +203,4 @@ open class Student: The_Student
                 "Почта: ${email}\n" +
                 "Гит: ${git}\n"
     }
-
 }

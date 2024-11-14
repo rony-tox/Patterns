@@ -6,14 +6,14 @@ fun read_from_txt(pathway: String): Array<Student>
     //println(con)
     for (i in con)
     {
-        nabor += Student(i);
+        nabor += Student(i)
     }
     return nabor;
 }
 fun write_to_txt(nab: Array<Student>, pathway: String): Void?
 {
     File(pathway).printWriter()
-    var s = "";
+    var s = ""
     for (i in nab)
     {
         s = i.convert_for_txt()

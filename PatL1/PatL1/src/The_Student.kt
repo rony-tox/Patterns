@@ -15,10 +15,9 @@ abstract class The_Student
         get() = field
         set(value)
         {
-            if (git!=null && isValidGit(git))
+            if (value!=null && isValidGit(value))
                 field = value
         }
-
 
     companion object
     {
